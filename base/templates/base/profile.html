@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    .profile-container{
+    display:grid;
+    grid-template-columns: 4fr 1fr;
+    }
+</style>
+
+<h1>{{user.username}}</h1>
+
+<div class="profile-container">
+
+        <div>
+            {% for room in rooms %}
+                <div>
+
+                    <a href="{% url 'user-profile' room.host.id %}">@{{room.host.username}}</a>
+                    <h5> {{room.id}} : <a href="{% url 'room' room.id%}" >{{room.name}} </a> </h5>
+                    <small>{{room.topic.name}}</small>
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div>
+            <h2> Topics </h2>
+            <hr>
+                <a href="{% url 'home' %}">All</a>
+            {% for topic in topics%}
+                <div>
+                    <a href="{% url 'home' %}?q={{topic.name}}"> {{topic.name}} </a>
+                </div>
+
+            {% endfor %}
+        </div>
+</div>
+
+{% endblock content %}
