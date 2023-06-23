@@ -1,0 +1,30 @@
+{% extends 'main.HTML' %}
+
+{% block content %}
+
+<style>
+    .home-container{
+        display:grid;
+        grid-template-columns: 4fr 1fr;
+    }
+</style>
+<div class="home-container">
+
+
+        <div>
+            <a href="{% url 'create-room' %}"> Create a new room </a>
+
+            {% include 'base/feed_component.html' %}
+
+        </div>
+
+        <div>
+
+            {% include 'base/topics_component.html' %}
+
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+</div>
+
+{% endblock %}
